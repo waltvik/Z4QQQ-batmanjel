@@ -11,3 +11,12 @@ body{
     padding: 0;
     margin: 0;
 }
+
+div#progbar{
+    width: 359px;
+    height: 110px;
+    background-image: url('/static/assets/progbarc.jpg');
+    position: absolute;
+    top: 600px;
+    left: 600px;
+}
