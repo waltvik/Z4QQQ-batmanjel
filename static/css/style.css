@@ -22,9 +22,17 @@ div#progbar{
 }
 
 .gamebtn {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     border-radius: 5px;
-    display: grid;
+    bottom: 0;
+    z-index: 2;
+    position: absolute;
+    height: 18px;
+    left: 0px;
+    width: 50px;
+    padding: 10px;
+    border: transparent;
+    margin: 0;
     }
 
 
