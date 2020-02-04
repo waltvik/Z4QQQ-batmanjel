@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Progress bar</title>
-    <script src="{{ url_for('static', filename='js/game.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='/static/js/game.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <img id="gamebckgrnd" src="/static/assets/windows-98-welcome.jpg">
+<div class="bars"></div>
 </body>
 </html>

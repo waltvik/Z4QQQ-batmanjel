@@ -1,4 +1,5 @@
 body{
+    background-color: red;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -10,4 +11,12 @@ body{
     position: absolute;
     padding: 0;
     margin: 0;
+}
+.bars{
+    position: absolute;
+    z-index: 1;
+    border: 3px blue;
+    display: inline-block;
+    width: 30px;
+    height: 40px;
 }
