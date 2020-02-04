@@ -15,8 +15,10 @@ body{
 .bars{
     position: absolute;
     z-index: 1;
-    border: 3px blue;
+    border: 3px solid blue;
+    background-color: blue;
     display: inline-block;
-    width: 30px;
-    height: 40px;
+    width: 25px;
+    height: 35px;
+    left: 97%;
 }
