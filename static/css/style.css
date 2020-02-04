@@ -1,0 +1,22 @@
+body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#gamebckgrnd{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+
+div#progbar{
+    width: 359px;
+    height: 110px;
+    background-image: url('/static/assets/progbarc.jpg');
+    position: absolute;
+    top: 600px;
+    left: 600px;
+}
