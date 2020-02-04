@@ -17,8 +17,8 @@ div#progbar{
     height: 110px;
     background-image: url('/static/assets/progbarc.jpg');
     position: absolute;
-    top: 600px;
-    left: 600px;
+    top: 75%;
+    left: 40%;
 }
 
 .gamebtn {
@@ -26,3 +26,5 @@ div#progbar{
     border-radius: 5px;
     display: grid;
     }
+
+
