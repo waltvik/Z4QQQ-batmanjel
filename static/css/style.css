@@ -13,8 +13,8 @@ body{
 }
 
 div#progbar{
-    width: 359px;
-    height: 110px;
+    width: 355px;
+    height: 109px;
     background-image: url('/static/assets/progbarc.jpg');
     position: absolute;
     top: 75%;
