@@ -69,6 +69,10 @@ function choose_random_sprite() {
     return sprites[Math.floor(Math.random() * sprites.length)];
 }
 
+function changeBackground() {
+
+document.body.style.backgroundImage = "url('/static/assets/bsod.jpg')";
+}
 
 function collisionDetection() {
     for (var enemy = 0; enemy < enemies.length; enemy++) {
@@ -88,7 +92,10 @@ function collisionDetection() {
                 else if (enemies[enemy].score === -1) {
                     progress_container.removeChild(progress_container.firstChild);
                 }
-
+                else if (enemies[enemy].score === 0){
+                    var alma = changeBackground();
+                    console.log(alma)
+                }
                 enemies.splice(enemy, 1);
             }
         }
