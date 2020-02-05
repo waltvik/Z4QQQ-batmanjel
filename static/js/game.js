@@ -61,7 +61,7 @@ function moveEnemies() {
 
 
 function randomizer() {
-    return Math.floor(Math.random()*100)+1;
+    return Math.floor(Math.random()*98)+1;
 }
 
 
@@ -72,6 +72,7 @@ function choose_random_sprite() {
 function changeBackground() {
 
 document.body.style.backgroundImage = "url('/static/assets/bsod.jpg')";
+
 }
 
 function collisionDetection() {
@@ -83,13 +84,12 @@ function collisionDetection() {
                 enemies[enemy].top <= progbar.top + 15
             ) {
                 var progress_container = document.getElementById('progresss');
-
                 if (enemies[enemy].score === 1) {
                     const barbar = document.createElement('div');
                     barbar.classList.add('progressbar');
                     progress_container.appendChild(barbar);
                 }
-                else if (enemies[enemy].score === -1) {
+                else if (enemies[enemy].score === -1 && document.getElementById("progress")) {
                     progress_container.removeChild(progress_container.firstChild);
                 }
                 else if (enemies[enemy].score === 0){
@@ -116,18 +116,20 @@ function end_of_screen() {
 var i = 0;
 
 function gameLoop() {
-            i++;
-                if (i%10 === 0) {
-                    var new_sprite = choose_random_sprite()
-                    enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score})
-                }
-                    setTimeout(gameLoop, 300);
-                    moveEnemies();
-                    drawEnemies();
-                    collisionDetection();
-                    end_of_screen();
+    console.log(document.body.style.backgroundImage);
+    while(document.body.style.backgroundImage !== "url('/static/assets/bsod.jpg')") {
+        i++;
+        if (i % 10 === 0) {
+            var new_sprite = choose_random_sprite()
+            enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score})
+        }
+        setTimeout(gameLoop, 300);
+        moveEnemies();
+        drawEnemies();
+        collisionDetection();
+        end_of_screen();
 
-
+    }
         }
 
 gameLoop();
