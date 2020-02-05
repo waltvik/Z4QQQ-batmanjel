@@ -39,12 +39,36 @@ div#progbar{
 div.enemy{
     width: 10px;
     height: 25px;
-    background-image: url('/static/assets/blueblock2.png');
     position: absolute;
 }
 
 div#enemies {
-    width: 1200px;
-    height: 800px;
+    width: 100%;
+    height: 100vh;
     position: absolute;
+}
+
+div#progress {
+    display: grid;
+
+    width: 10px;
+    height: 13px;
+    position: absolute;
+    top: 48%;
+    left: 23%;
+}
+
+div#progresss {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1%;
+    position: absolute;
+    width: 71%;
+    height: 12%;
+    top: 48%;
+    left: 23%;
+}
+
+.progressbar {
+    background-color: blue;
 }
