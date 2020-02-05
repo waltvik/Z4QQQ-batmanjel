@@ -74,6 +74,18 @@ function collisionDetection() {
 }
 
 
+function end_of_screen() {
+    for (var enemy = 0; enemy < enemies.length; enemy++) {
+        if (
+                    enemies[enemy].top > 90
+                ) {
+                    console.log("end if screen")
+                    enemies.splice(enemy, 1);
+                }
+    }
+}
+
+
 var i = 0
 
 function gameLoop() {
@@ -86,8 +98,9 @@ function gameLoop() {
                     console.log('move')
                     setTimeout(gameLoop, 500)
                     moveEnemies();
-                    collisionDetection()
+                    collisionDetection();
                     drawEnemies();
+                    end_of_screen();
 
 
         }
