@@ -3,9 +3,25 @@ var progbar = {
     left: 40
 };
 
-var enemies = [
-    { left: randomizer(), top: 0, background: "url('/static/assets/blueblock2.png')" }
-];
+var enemies = [];
+
+
+var blue = {
+    background: "url('/static/assets/blueblock2.png')",
+    score: 1
+};
+
+var orange = {
+    background: "url('/static/assets/orangeblock.png')",
+    score: -1
+};
+
+var red = {
+    background: "url('/static/assets/redblock.png')",
+    score: 0
+}
+
+var sprites = [blue, orange, red]
 
 document.onkeydown = function (e) {
     if (progbar.left >= 0 && progbar.left <= 77.5) {
@@ -50,8 +66,7 @@ function randomizer() {
 
 
 function choose_random_sprite() {
-    var myArray = ['url(\'/static/assets/blueblock2.png\')', 'url(\'/static/assets/blueblock2.png\')', 'url(\'/static/assets/redblock.png\')', 'url(\'/static/assets/orangeblock.png\')'];
-    return myArray[Math.floor(Math.random() * myArray.length)];
+    return sprites[Math.floor(Math.random() * sprites.length)];
 }
 
 
@@ -64,9 +79,15 @@ function collisionDetection() {
                 enemies[enemy].top <= progbar.top + 15
             ) {
                 var progress_container = document.getElementById('progresss');
-                const barbar = document.createElement('div');
-                barbar.classList.add('progressbar');
-                progress_container.appendChild(barbar);
+
+                if (enemies[enemy].score === 1) {
+                    const barbar = document.createElement('div');
+                    barbar.classList.add('progressbar');
+                    progress_container.appendChild(barbar);
+                }
+                else if (enemies[enemy].score === -1) {
+                    progress_container.removeChild(progress_container.firstChild);
+                }
 
                 enemies.splice(enemy, 1);
             }
@@ -90,7 +111,8 @@ var i = 0;
 function gameLoop() {
             i++;
                 if (i%10 === 0) {
-                    enemies.push({left: randomizer(), top: 0, background: choose_random_sprite()})
+                    var new_sprite = choose_random_sprite()
+                    enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score})
                 }
                     setTimeout(gameLoop, 300);
                     moveEnemies();
