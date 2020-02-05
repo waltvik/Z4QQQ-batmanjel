@@ -79,6 +79,10 @@ function gameLoop() {
 
 
 unmuteButton.addEventListener('click', function() {
+
+    music.currentTime = 0;
+    music.loop = true;
+    music.muted = false;
     music.play();
   });
 gameLoop();
