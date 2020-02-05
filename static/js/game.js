@@ -31,7 +31,7 @@ function drawHero() {
 
 
 function drawEnemies() {
-    document.getElementById('enemies').innerHTML = ""
+    document.getElementById('enemies').innerHTML = "";
     for(var i = 0 ; i < enemies.length ; i++ ) {
         document.getElementById('enemies').innerHTML += `<div class='enemy' style="left:${enemies[i].left}%; top:${enemies[i].top}%; background-image:${enemies[i].background}"></div>`;
     }
@@ -81,14 +81,14 @@ function end_of_screen() {
 }
 
 
-var i = 0
+var i = 0;
 
 function gameLoop() {
-            i++
+            i++;
                 if (i%10 === 0) {
                     enemies.push({left: randomizer(), top: 0, background: choose_random_sprite()})
                 }
-                    setTimeout(gameLoop, 300)
+                    setTimeout(gameLoop, 300);
                     moveEnemies();
                     drawEnemies();
                     collisionDetection();
@@ -97,4 +97,4 @@ function gameLoop() {
 
         }
 
-gameLoop()
+gameLoop();
