@@ -1,5 +1,4 @@
 body{
-    background-color: red;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -48,8 +47,36 @@ div#enemies {
     height: 100vh;
     position: absolute;
 }
+
+
 #unmutedButton{
     width: 40px;
     height: 40px;
     z-index: 1;
+    position: absolute;
+    right: 0%;
+
+div#progress {
+    display: grid;
+
+    width: 10px;
+    height: 13px;
+    position: absolute;
+    top: 48%;
+    left: 23%;
+}
+
+div#progresss {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1%;
+    position: absolute;
+    width: 71%;
+    height: 12%;
+    top: 48%;
+    left: 23%;
+}
+
+.progressbar {
+    background-color: blue;
 }

@@ -87,17 +87,23 @@ var i = 0;
 function gameLoop() {
             i++;
                 if (i%10 === 0) {
+
                     enemies.push({left: randomizer(), top: 0, background: choose_random_sprite()})
                 }
                     setTimeout(gameLoop, 300);
                     moveEnemies();
                     drawEnemies();
                     collisionDetection();
-                    end_of_screen();
-}
+                    end_of_screen();}
+
 
 unmuteButton.addEventListener('click', function() {
+    unmuteButton.src = "/static/assets/soundon.png";
+    music.currentTime = 0;
+    music.loop = true;
     music.muted = false;
     music.play();
   });
+
+
 gameLoop();
