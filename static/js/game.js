@@ -79,7 +79,7 @@ function gameLoop() {
 
 
 unmuteButton.addEventListener('click', function() {
-
+    unmuteButton.src = "/static/assets/soundon.png";
     music.currentTime = 0;
     music.loop = true;
     music.muted = false;

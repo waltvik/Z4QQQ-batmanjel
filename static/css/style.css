@@ -54,4 +54,5 @@ div#enemies {
     height: 40px;
     z-index: 1;
     position: absolute;
+    right: 0%;
 }
