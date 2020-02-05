@@ -81,14 +81,14 @@ function end_of_screen() {
 }
 
 
-var i = 0
+var i = 0;
 
 function gameLoop() {
-            i++
+            i++;
                 if (i%10 === 0) {
                     enemies.push({left: randomizer(), top: 0, background: choose_random_sprite()})
                 }
-                    setTimeout(gameLoop, 300)
+                    setTimeout(gameLoop, 300);
                     moveEnemies();
                     drawEnemies();
                     collisionDetection();
@@ -97,4 +97,4 @@ function gameLoop() {
 
         }
 
-gameLoop()
+gameLoop();
