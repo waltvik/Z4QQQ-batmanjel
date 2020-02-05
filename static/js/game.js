@@ -61,7 +61,7 @@ function moveEnemies() {
 
 
 function randomizer() {
-    return Math.floor(Math.random()*100)+1;
+    return Math.floor(Math.random()*98)+1;
 }
 
 
@@ -90,6 +90,7 @@ function collisionDetection() {
                     progress_container.appendChild(barbar);
                 }
                 else if (enemies[enemy].score === -1) {
+                    console.log('narancs')
                     progress_container.removeChild(progress_container.firstChild);
                 }
                 else if (enemies[enemy].score === 0){
