@@ -25,7 +25,7 @@ document.onkeydown = function (e) {
         }
     }
     drawHero();
-}
+};
 
 function drawHero() {
             document.getElementById('progbar').style.left = progbar.left + '%';
