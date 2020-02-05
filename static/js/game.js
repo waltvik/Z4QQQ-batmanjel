@@ -84,13 +84,16 @@ function collisionDetection() {
                 enemies[enemy].top <= progbar.top + 15
             ) {
                 var progress_container = document.getElementById('progresss');
+                var barzz = document.getElementById("progresss");
+                console.log(barzz);
                 if (enemies[enemy].score === 1) {
                     const barbar = document.createElement('div');
                     barbar.classList.add('progressbar');
                     progress_container.appendChild(barbar);
                 }
-                else if (enemies[enemy].score === -1 && document.getElementById("progress")) {
+                else if (enemies[enemy].score === -1 && document.getElementById("progresss")) {
                     progress_container.removeChild(progress_container.firstChild);
+                    console.log('remove child');
                 }
                 else if (enemies[enemy].score === 0){
                     var alma = changeBackground();
