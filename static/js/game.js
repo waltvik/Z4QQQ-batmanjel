@@ -14,14 +14,14 @@ document.onkeydown = function (e) {
     if (progbar.left >= 0 && progbar.left <= 77.5) {
         if (e.key === 'ArrowLeft') {
             if (progbar.left > 0) {
-                console.log(progbar.left)
+                console.log(progbar.left);
                 progbar.left = progbar.left - 0.5;
             }
         }
 
         else if (e.key === 'ArrowRight') {
             if (progbar.left < 77.5) {
-                console.log(progbar.left)
+                console.log(progbar.left);
                 progbar.left = progbar.left + 0.5;
                 }
         }
@@ -69,7 +69,6 @@ function collisionDetection() {
                 enemies[enemy].top >= progbar.top &&
                 enemies[enemy].top <= progbar.top + 15
             ) {
-                console.log("tácsitácsi")
                 enemies.splice(enemy, 1);
             }
         }
