@@ -1,3 +1,5 @@
+var music= document.getElementById("music");
+var unmuteButton=document.getElementById("unmutedButton");
 var progbar = {
     top: 75,
     left: 40
@@ -22,7 +24,7 @@ document.onkeydown = function (e) {
         }
     }
     drawHero();
-}
+};
 
 function drawHero() {
             document.getElementById('progbar').style.left = progbar.left + '%';
@@ -57,7 +59,6 @@ function choose_random_sprite() {
 
 function collisionDetection() {
     for (var enemy = 0; enemy < enemies.length; enemy++) {
-
             if (
                 enemies[enemy].left >= progbar.left &&
                 enemies[enemy].left <= progbar.left + 22 &&
@@ -93,8 +94,10 @@ function gameLoop() {
                     drawEnemies();
                     collisionDetection();
                     end_of_screen();
+}
 
-
-        }
-
+unmuteButton.addEventListener('click', function() {
+    music.muted = false;
+    music.play();
+  });
 gameLoop();
