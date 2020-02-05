@@ -1,7 +1,14 @@
+html{
+    height: 100vh;
+    width: 100%;
+}
+
 body{
     height: 100vh;
     margin: 0;
     padding: 0;
+    background-image: url("/static/assets/windows-98-welcome.jpg");
+    background-size: 100% 100%;
 }
 
 #gamebckgrnd{
@@ -56,6 +63,7 @@ div#enemies {
     position: absolute;
     right: 0;
 }
+
 
 div#progress {
     display: grid;
