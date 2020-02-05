@@ -28,7 +28,7 @@ div#progbar{
     z-index: 2;
     position: absolute;
     height: 18px;
-    left: 0px;
+    left: 0;
     width: 50px;
     padding: 10px;
     border: transparent;
@@ -54,7 +54,8 @@ div#enemies {
     height: 40px;
     z-index: 1;
     position: absolute;
-    right: 0%;
+    right: 0;
+}
 
 div#progress {
     display: grid;
