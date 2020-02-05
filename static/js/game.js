@@ -1,5 +1,3 @@
-var music= document.getElementById("music");
-var unmuteButton=document.getElementById("unmutedButton");
 var progbar = {
     top: 75,
     left: 40
@@ -65,6 +63,11 @@ function collisionDetection() {
                 enemies[enemy].top >= progbar.top &&
                 enemies[enemy].top <= progbar.top + 15
             ) {
+                var progress_container = document.getElementById('progresss');
+                const barbar = document.createElement('div');
+                barbar.classList.add('progressbar');
+                progress_container.appendChild(barbar);
+
                 enemies.splice(enemy, 1);
             }
         }
@@ -94,10 +97,8 @@ function gameLoop() {
                     drawEnemies();
                     collisionDetection();
                     end_of_screen();
-}
 
-unmuteButton.addEventListener('click', function() {
-    music.muted = false;
-    music.play();
-  });
+
+        }
+
 gameLoop();
