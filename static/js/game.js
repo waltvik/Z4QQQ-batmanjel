@@ -102,12 +102,15 @@ function gameLoop() {
 
 
 unmuteButton.addEventListener('click', function() {
-    unmuteButton.src = "/static/assets/soundon.png";
-    music.currentTime = 0;
-    music.loop = true;
-    music.muted = false;
-    music.play();
-  });
+    if (music.muted === true){
+        unmuteButton.src = "/static/assets/soundon.png";
+        music.loop = true;
+        music.muted = false;
+        music.play();}
+    else {unmuteButton.src = "/static/assets/nosound.jpg";
+        music.muted = true;
+    }
+});
 
 
 gameLoop();
