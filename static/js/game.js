@@ -4,9 +4,7 @@ var progbar = {
 };
 
 var enemies = [
-    { left: randomizer(), top: 100 },
-    { left: randomizer(), top: 100 },
-    { left: randomizer(), top: 100 }
+    { left: randomizer(), top: 0 }
 ];
 
 document.onkeydown = function (e) {
@@ -38,26 +36,60 @@ function drawHero() {
 function drawEnemies() {
     document.getElementById('enemies').innerHTML = ""
     for(var i = 0 ; i < enemies.length ; i++ ) {
-        document.getElementById('enemies').innerHTML += `<div class='enemy' style='left:${enemies[i].left}%; top:${enemies[i].top}px'></div>`;
+        document.getElementById('enemies').innerHTML += `<div class='enemy' style='left:${enemies[i].left}%; top:${enemies[i].top}%'></div>`;
     }
 }
 
 function moveEnemies() {
     for(var i = 0 ; i < enemies.length ; i++ ) {
-        enemies[i].top = enemies[i].top + 10;
+        enemies[i].top = enemies[i].top + 5;
     }
 }
 
 
 function randomizer() {
-    return Math.floor(Math.random()*97)+1;
+    return Math.floor(Math.random()*120)+1;
 }
 
 
+function collisionDetection() {
+    for (var enemy = 0; enemy < enemies.length; enemy++) {
+        console.log('progbar')
+        console.log(progbar.top)
+        console.log(progbar.left)
+        console.log(progbar.left + 37)
+        console.log('enemy')
+        console.log(enemies[enemy].top)
+        console.log(enemies[enemy].left)
+            if (
+                enemies[enemy].left >= progbar.left &&
+                enemies[enemy].left <= progbar.left + 37 &&
+                enemies[enemy].top >= progbar.top &&
+                enemies[enemy].top <= progbar.top + 10
+            ) {
+                console.log("tácsitácsi")
+                enemies.splice(enemy, 1);
+            }
+        }
+}
+
+
+var i = 0
+
 function gameLoop() {
-            setTimeout(gameLoop, 100)
-            moveEnemies();
-            drawEnemies();
+            i++
+    console.log(i)
+                if (i%10 === 0) {
+                    console.log('new enemy')
+                    enemies.push({left: randomizer(), top: 0})
+                }
+                    console.log('move')
+                    setTimeout(gameLoop, 500)
+                    moveEnemies();
+                    collisionDetection()
+                    drawEnemies();
+
+
         }
 
 gameLoop()
