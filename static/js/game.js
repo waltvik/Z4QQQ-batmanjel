@@ -113,23 +113,29 @@ function end_of_screen() {
 }
 
 
+function endgame() {
+    console.log('vége');
+}
+
 var i = 0;
 
 function gameLoop() {
-    console.log(document.body.style.backgroundImage);
-    while(document.body.style.backgroundImage !== "url('/static/assets/bsod.jpg')") {
         i++;
         if (i%10 === 0) {
-            var new_sprite = choose_random_sprite()
-            enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score})
+            var new_sprite = choose_random_sprite();
+            enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score});
         }
-        setTimeout(gameLoop, 300);
+        bckgrnd = document.getElementsByTagName('body');
+        if (bckgrnd.item(0).style.backgroundImage) {
+            endgame();
+        }
+        else {
+            setTimeout(gameLoop, 300);
+        }
+
         moveEnemies();
         drawEnemies();
         collisionDetection();
         end_of_screen();
-
     }
-        }
-
 gameLoop();
