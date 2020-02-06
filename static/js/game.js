@@ -6,6 +6,8 @@ var progbar = {
     left: 40
 };
 
+var currentScore = 0;
+
 var enemies = [];
 
 
@@ -22,7 +24,7 @@ var orange = {
 var red = {
     background: "url('/static/assets/redblock.png')",
     score: 0
-}
+};
 
 var sprites = [blue, orange, red]
 
@@ -87,14 +89,28 @@ function collisionDetection() {
                 enemies[enemy].top <= progbar.top + 15
             ) {
                 var progress_container = document.getElementById('progresss');
+
                 if (enemies[enemy].score === 1) {
                     const barbar = document.createElement('div');
                     barbar.classList.add('progressbar');
                     progress_container.appendChild(barbar);
+                    currentScore ++;
                 }
-                else if (enemies[enemy].score === -1 && document.getElementById("progresss")) {
-                    progress_container.removeChild(progress_container.lastChild);
-                }
+
+                else if (enemies[enemy].score === -1) {
+                    var x = document.getElementById("progresss").childElementCount;
+                    console.log(x);
+                    if (x !== 0){
+                        progress_container.removeChild(progress_container.lastChild);
+                        if (currentScore === 0) {
+                            currentScore = 0
+                        }
+                        else{
+                            currentScore --
+                        }
+                        }
+                    }
+
                 else if (enemies[enemy].score === 0){
                     changeBackground();
                     endgame();
@@ -131,6 +147,16 @@ function endgame() {
 
 }
 
+function winCheck() {
+    if (currentScore === 17){
+        document.body.style.backgroundImage = "url('/static/assets/clippytest2.jpg')"
+    }
+    else{
+        console.log("Score:" + currentScore)
+    }
+}
+
+
 var i = 0;
 
 function gameLoop() {
@@ -146,6 +172,7 @@ function gameLoop() {
             setTimeout(gameLoop, 300);
         }
         collisionDetection();
+        winCheck();
         drawEnemies();
         end_of_screen();
     }
