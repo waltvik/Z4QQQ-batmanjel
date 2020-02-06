@@ -1,3 +1,6 @@
+var music= document.getElementById("music");
+var unmuteButton=document.getElementById("unmutedButton");
+
 var progbar = {
     top: 75,
     left: 40
@@ -19,7 +22,7 @@ var orange = {
 var red = {
     background: "url('/static/assets/redblock.png')",
     score: 0
-}
+};
 
 var sprites = [blue, orange, red]
 
@@ -120,6 +123,8 @@ function end_of_screen() {
 
 
 function endgame() {
+    document.body.style.backgroundImage = "url('/static/assets/bsod.jpg')";
+    console.log(document.body.style.backgroundImage);
     console.log('vége');
 }
 
