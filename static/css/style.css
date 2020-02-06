@@ -33,7 +33,7 @@ div#progbar{
     background-color: transparent;
     border-radius: 5px;
     bottom: 0;
-    z-index: 2;
+    z-index: 1;
     position: absolute;
     height: 18px;
     left: 0;

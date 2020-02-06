@@ -136,6 +136,7 @@ function gameLoop() {
         }
         bckgrnd = document.getElementsByTagName('body');
         if (bckgrnd.item(0).style.backgroundImage) {
+            console.log(bckgrnd.item(0).style.backgroundImage)
             endgame();
         }
         else {
