@@ -24,6 +24,7 @@ div#progbar{
     height: 109px;
     background-image: url('/static/assets/progbarc.jpg');
     position: absolute;
+    z-index: 1;
     top: 75%;
     left: 40%;
 }

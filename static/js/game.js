@@ -1,3 +1,6 @@
+var music= document.getElementById("music");
+var unmuteButton=document.getElementById("unmutedButton");
+
 var progbar = {
     top: 75,
     left: 40
@@ -144,6 +147,7 @@ function gameLoop() {
         collisionDetection();
         end_of_screen();
     }
+
 unmuteButton.addEventListener('click', function() {
     if (music.muted === true){
         unmuteButton.src = "/static/assets/soundon.png";
@@ -156,3 +160,4 @@ unmuteButton.addEventListener('click', function() {
 });
 
 gameLoop();
+console.log('running loop')
