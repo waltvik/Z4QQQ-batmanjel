@@ -29,7 +29,6 @@ var red = {
 var sprites = [blue, orange, red]
 
 document.onkeydown = function (e) {
-    console.log(e.key);
     if (progbar.left >= 0 && progbar.left <= 77.5) {
         if (e.key === 'ArrowLeft') {
             if (progbar.left > 0) {
@@ -90,13 +89,14 @@ function collisionDetection() {
                 enemies[enemy].top <= progbar.top + 15
             ) {
                 var progress_container = document.getElementById('progresss');
-                var barzz = document.getElementById("progresss");
+
                 if (enemies[enemy].score === 1) {
                     const barbar = document.createElement('div');
                     barbar.classList.add('progressbar');
                     progress_container.appendChild(barbar);
                     currentScore ++;
                 }
+
                 else if (enemies[enemy].score === -1) {
                     var x = document.getElementById("progresss").childElementCount;
                     console.log(x);
@@ -110,9 +110,10 @@ function collisionDetection() {
                         }
                         }
                     }
+
                 else if (enemies[enemy].score === 0){
-                    var alma = changeBackground();
-                    console.log(alma)
+                    changeBackground();
+                    endgame();
                 }
                 enemies.splice(enemy, 1);
             }
@@ -132,7 +133,6 @@ function end_of_screen() {
 
 
 function endgame() {
-    console.log('vége');
     var x = document.getElementById("progbar");
     x.style.display = "none";
     var y = document.getElementById("enemies");
@@ -141,6 +141,10 @@ function endgame() {
     z.style.display = "none";
     var d = document.getElementById("unmutedButton");
     d.style.display = "none";
+    var b = document.getElementById("backbtn");
+    b.style.display = "block";
+
+
 }
 
 function winCheck() {
@@ -157,23 +161,19 @@ var i = 0;
 
 function gameLoop() {
         i++;
+
+        moveEnemies();
         if (i%10 === 0) {
             var new_sprite = choose_random_sprite();
             enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score});
         }
         bckgrnd = document.getElementsByTagName('body');
-        if (bckgrnd.item(0).style.backgroundImage) {
-            console.log(bckgrnd.item(0).style.backgroundImage);
-            endgame();
-        }
-        else {
+        if (bckgrnd.item(0).style.backgroundImage !== 'url("/static/assets/bsod.jpg")') {
             setTimeout(gameLoop, 300);
         }
-
-        moveEnemies();
-        drawEnemies();
         collisionDetection();
         winCheck();
+        drawEnemies();
         end_of_screen();
     }
 
@@ -189,4 +189,3 @@ unmuteButton.addEventListener('click', function() {
 });
 
 gameLoop();
-console.log('running loop')
