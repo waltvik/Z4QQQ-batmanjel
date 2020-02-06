@@ -98,7 +98,7 @@ function collisionDetection() {
                     progress_container.appendChild(barbar);
                 }
                 else if (enemies[enemy].score === -1 && document.getElementById("progresss")) {
-                    progress_container.removeChild(progress_container.firstChild);
+                    progress_container.removeChild(progress_container.lastChild);
                     console.log('remove child');
                 }
                 else if (enemies[enemy].score === 0){
