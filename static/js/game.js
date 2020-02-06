@@ -26,19 +26,19 @@ var red = {
     score: 0
 };
 
-var sprites = [blue, orange, red]
+var sprites = [blue, orange, red, blue, orange]
 
 document.onkeydown = function (e) {
     if (progbar.left >= 0 && progbar.left <= 77.5) {
         if (e.key === 'ArrowLeft') {
             if (progbar.left > 0) {
-                progbar.left = progbar.left - 0.5;
+                progbar.left = progbar.left - 1;
             }
         }
 
         else if (e.key === 'ArrowRight') {
             if (progbar.left < 77.5) {
-                progbar.left = progbar.left + 0.5;
+                progbar.left = progbar.left + 1;
                 }
         }
     }
@@ -66,12 +66,12 @@ function moveEnemies() {
 
 
 function randomizer() {
-    return Math.floor(Math.random()*98)+1;
+    return Math.floor(Math.random()*95)+5;
 }
 
 
 function sprite_speeder() {
-    return Math.floor(Math.random()*20)+1;
+    return Math.floor(Math.random()*15)+5;
 }
 
 
@@ -91,7 +91,7 @@ function collisionDetection() {
                 enemies[enemy].left >= progbar.left &&
                 enemies[enemy].left <= progbar.left + 22 &&
                 enemies[enemy].top >= progbar.top &&
-                enemies[enemy].top <= progbar.top + 15
+                enemies[enemy].top <= progbar.top + 21
             ) {
                 var progress_container = document.getElementById('progresss');
 
@@ -129,7 +129,7 @@ function collisionDetection() {
 function end_of_screen() {
     for (var enemy = 0; enemy < enemies.length; enemy++) {
         if (
-                    enemies[enemy].top > 90
+                    enemies[enemy].top > 95
                 ) {
                     enemies.splice(enemy, 1);
                 }
@@ -152,9 +152,23 @@ function endgame() {
 
 }
 
+function wongame() {
+    var x = document.getElementById("progbar");
+    x.style.display = "none";
+    var y = document.getElementById("enemies");
+    y.style.display = "none";
+    var clippy = document.getElementById("wongameclippy");
+    clippy.style.display = "block";
+    var button = document.getElementById("wonbutton");
+    button.style.display = "block";
+    var button1 = document.getElementById("wonbutton2");
+    button1.style.display = "block";
+
+}
+
 function winCheck() {
-    if (currentScore === 17){
-        document.body.style.backgroundImage = "url('/static/assets/clippytest2.jpg')"
+    if (currentScore === 5){
+        wongame();
     }
     else{
         console.log("Score:" + currentScore)
@@ -168,18 +182,20 @@ function gameLoop() {
         i++;
 
         moveEnemies();
-        if (i%10 === 0) {
+        if (i%5 === 0) {
             var new_sprite = choose_random_sprite();
             enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score, speed:sprite_speeder()});
         }
-        bckgrnd = document.getElementsByTagName('body');
-        if (bckgrnd.item(0).style.backgroundImage !== 'url("/static/assets/bsod.jpg")') {
+
+        var progbar_playing = document.getElementById('progbar');
+        if (progbar_playing.style.display !== 'none') {
             setTimeout(gameLoop, 300);
         }
+
         collisionDetection();
         winCheck();
-        drawEnemies();
         end_of_screen();
+        drawEnemies();
     }
 
 unmuteButton.addEventListener('click', function() {
