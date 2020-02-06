@@ -60,13 +60,18 @@ function drawEnemies() {
 
 function moveEnemies() {
     for(var i = 0 ; i < enemies.length ; i++ ) {
-        enemies[i].top = enemies[i].top + 5;
+        enemies[i].top = enemies[i].top + enemies[i].speed;
     }
 }
 
 
 function randomizer() {
     return Math.floor(Math.random()*98)+1;
+}
+
+
+function sprite_speeder() {
+    return Math.floor(Math.random()*20)+1;
 }
 
 
@@ -165,7 +170,7 @@ function gameLoop() {
         moveEnemies();
         if (i%10 === 0) {
             var new_sprite = choose_random_sprite();
-            enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score});
+            enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score, speed:sprite_speeder()});
         }
         bckgrnd = document.getElementsByTagName('body');
         if (bckgrnd.item(0).style.backgroundImage !== 'url("/static/assets/bsod.jpg")') {
