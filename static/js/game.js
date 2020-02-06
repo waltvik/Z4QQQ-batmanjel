@@ -6,6 +6,8 @@ var progbar = {
     left: 40
 };
 
+var currentScore = 0;
+
 var enemies = [];
 
 
@@ -31,14 +33,12 @@ document.onkeydown = function (e) {
     if (progbar.left >= 0 && progbar.left <= 77.5) {
         if (e.key === 'ArrowLeft') {
             if (progbar.left > 0) {
-                console.log(progbar.left);
                 progbar.left = progbar.left - 0.5;
             }
         }
 
         else if (e.key === 'ArrowRight') {
             if (progbar.left < 77.5) {
-                console.log(progbar.left);
                 progbar.left = progbar.left + 0.5;
                 }
         }
@@ -91,15 +91,22 @@ function collisionDetection() {
             ) {
                 var progress_container = document.getElementById('progresss');
                 var barzz = document.getElementById("progresss");
-                console.log(barzz);
                 if (enemies[enemy].score === 1) {
                     const barbar = document.createElement('div');
                     barbar.classList.add('progressbar');
                     progress_container.appendChild(barbar);
+                    currentScore ++;
                 }
-                else if (enemies[enemy].score === -1 && document.getElementById("progresss")) {
+                else if (enemies[enemy].score === -1) {
                     progress_container.removeChild(progress_container.firstChild);
                     console.log('remove child');
+                    if (currentScore === 0) {
+                        currentScore = 0
+                    }
+                    else{
+                        currentScore --
+                    }
+
                 }
                 else if (enemies[enemy].score === 0){
                     var alma = changeBackground();
@@ -134,6 +141,16 @@ function endgame() {
     d.style.display = "none";
 }
 
+function winCheck() {
+    if (currentScore === 17){
+        document.body.style.backgroundImage = "url('/static/assets/clippytest.jpg')"
+    }
+    else{
+        console.log("Score:" + currentScore)
+    }
+}
+
+
 var i = 0;
 
 function gameLoop() {
@@ -154,6 +171,7 @@ function gameLoop() {
         moveEnemies();
         drawEnemies();
         collisionDetection();
+        winCheck();
         end_of_screen();
     }
 
