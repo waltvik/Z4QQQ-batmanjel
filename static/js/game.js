@@ -98,16 +98,18 @@ function collisionDetection() {
                     currentScore ++;
                 }
                 else if (enemies[enemy].score === -1) {
-                    progress_container.removeChild(progress_container.firstChild);
-                    console.log('remove child');
-                    if (currentScore === 0) {
-                        currentScore = 0
+                    var x = document.getElementById("progresss").childElementCount;
+                    console.log(x);
+                    if (x !== 0){
+                        progress_container.removeChild(progress_container.lastChild);
+                        if (currentScore === 0) {
+                            currentScore = 0
+                        }
+                        else{
+                            currentScore --
+                        }
+                        }
                     }
-                    else{
-                        currentScore --
-                    }
-
-                }
                 else if (enemies[enemy].score === 0){
                     var alma = changeBackground();
                     console.log(alma)
@@ -143,7 +145,7 @@ function endgame() {
 
 function winCheck() {
     if (currentScore === 17){
-        document.body.style.backgroundImage = "url('/static/assets/clippytest.jpg')"
+        document.body.style.backgroundImage = "url('/static/assets/clippytest2.jpg')"
     }
     else{
         console.log("Score:" + currentScore)
@@ -161,7 +163,7 @@ function gameLoop() {
         }
         bckgrnd = document.getElementsByTagName('body');
         if (bckgrnd.item(0).style.backgroundImage) {
-            console.log(bckgrnd.item(0).style.backgroundImage)
+            console.log(bckgrnd.item(0).style.backgroundImage);
             endgame();
         }
         else {
