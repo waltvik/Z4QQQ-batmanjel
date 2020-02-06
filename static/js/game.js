@@ -102,8 +102,8 @@ function collisionDetection() {
                     console.log('remove child');
                 }
                 else if (enemies[enemy].score === 0){
-                    var alma = changeBackground();
-                    console.log(alma)
+                    changeBackground();
+                    endgame();
                 }
                 enemies.splice(enemy, 1);
             }
@@ -132,28 +132,26 @@ function endgame() {
     z.style.display = "none";
     var d = document.getElementById("unmutedButton");
     d.style.display = "none";
+    var b = document.getElementById("backbtn");
+    b.style.display = "block";
+
+
 }
 
 var i = 0;
 
 function gameLoop() {
         i++;
+
+        moveEnemies();
         if (i%10 === 0) {
             var new_sprite = choose_random_sprite();
             enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score});
         }
-        bckgrnd = document.getElementsByTagName('body');
-        if (bckgrnd.item(0).style.backgroundImage) {
-            console.log(bckgrnd.item(0).style.backgroundImage)
-            endgame();
-        }
-        else {
-            setTimeout(gameLoop, 300);
-        }
 
-        moveEnemies();
-        drawEnemies();
+        setTimeout(gameLoop, 300);
         collisionDetection();
+        drawEnemies();
         end_of_screen();
     }
 
