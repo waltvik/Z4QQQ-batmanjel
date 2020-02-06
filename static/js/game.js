@@ -123,8 +123,6 @@ function end_of_screen() {
 
 
 function endgame() {
-    document.body.style.backgroundImage = "url('/static/assets/bsod.jpg')";
-    console.log(document.body.style.backgroundImage);
     console.log('vége');
 }
 
