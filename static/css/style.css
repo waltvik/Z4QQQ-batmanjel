@@ -107,3 +107,47 @@ a#backbtn {
     letter-spacing: 1px;
     display: none;
 }
+
+img#wongameclippy {
+    height: 500px;
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+}
+
+a#wonbutton {
+    display: none;
+    text-decoration: none;
+    color: white;
+    font-family: 'Lucida Console', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+
+a#wonbutton2 {
+    display: none;
+    text-decoration: none;
+    color: white;
+    font-family: 'Lucida Console', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+
+div#wonbuttonz {
+    display: grid;
+    grid-template-rows: min-content min-content;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+}
