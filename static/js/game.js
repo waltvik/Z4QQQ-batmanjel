@@ -27,18 +27,15 @@ var red = {
 var sprites = [blue, orange, red]
 
 document.onkeydown = function (e) {
-    console.log(e.key);
     if (progbar.left >= 0 && progbar.left <= 77.5) {
         if (e.key === 'ArrowLeft') {
             if (progbar.left > 0) {
-                console.log(progbar.left);
                 progbar.left = progbar.left - 0.5;
             }
         }
 
         else if (e.key === 'ArrowRight') {
             if (progbar.left < 77.5) {
-                console.log(progbar.left);
                 progbar.left = progbar.left + 0.5;
                 }
         }
@@ -90,8 +87,6 @@ function collisionDetection() {
                 enemies[enemy].top <= progbar.top + 15
             ) {
                 var progress_container = document.getElementById('progresss');
-                var barzz = document.getElementById("progresss");
-                console.log(barzz);
                 if (enemies[enemy].score === 1) {
                     const barbar = document.createElement('div');
                     barbar.classList.add('progressbar');
@@ -99,7 +94,6 @@ function collisionDetection() {
                 }
                 else if (enemies[enemy].score === -1 && document.getElementById("progresss")) {
                     progress_container.removeChild(progress_container.lastChild);
-                    console.log('remove child');
                 }
                 else if (enemies[enemy].score === 0){
                     changeBackground();
@@ -123,7 +117,6 @@ function end_of_screen() {
 
 
 function endgame() {
-    console.log('vége');
     var x = document.getElementById("progbar");
     x.style.display = "none";
     var y = document.getElementById("enemies");
@@ -148,8 +141,10 @@ function gameLoop() {
             var new_sprite = choose_random_sprite();
             enemies.push({left: randomizer(), top: 0, background: new_sprite.background, score: new_sprite.score});
         }
-
-        setTimeout(gameLoop, 300);
+        bckgrnd = document.getElementsByTagName('body');
+        if (bckgrnd.item(0).style.backgroundImage !== 'url("/static/assets/bsod.jpg")') {
+            setTimeout(gameLoop, 300);
+        }
         collisionDetection();
         drawEnemies();
         end_of_screen();
@@ -167,4 +162,3 @@ unmuteButton.addEventListener('click', function() {
 });
 
 gameLoop();
-console.log('running loop')
