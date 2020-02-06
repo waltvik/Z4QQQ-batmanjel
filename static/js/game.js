@@ -124,6 +124,14 @@ function end_of_screen() {
 
 function endgame() {
     console.log('vége');
+    var x = document.getElementById("progbar");
+    x.style.display = "none";
+    var y = document.getElementById("enemies");
+    y.style.display = "none";
+    var z = document.getElementById("music");
+    z.style.display = "none";
+    var d = document.getElementById("unmutedButton");
+    d.style.display = "none";
 }
 
 var i = 0;
@@ -136,6 +144,7 @@ function gameLoop() {
         }
         bckgrnd = document.getElementsByTagName('body');
         if (bckgrnd.item(0).style.backgroundImage) {
+            console.log(bckgrnd.item(0).style.backgroundImage)
             endgame();
         }
         else {
@@ -147,6 +156,7 @@ function gameLoop() {
         collisionDetection();
         end_of_screen();
     }
+
 unmuteButton.addEventListener('click', function() {
     if (music.muted === true){
         unmuteButton.src = "/static/assets/soundon.png";
@@ -159,3 +169,4 @@ unmuteButton.addEventListener('click', function() {
 });
 
 gameLoop();
+console.log('running loop')
