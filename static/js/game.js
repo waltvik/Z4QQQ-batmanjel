@@ -37,7 +37,7 @@ document.onkeydown = function (e) {
         }
 
         else if (e.key === 'ArrowRight') {
-            if (progbar.left < 77.5) {
+            if (progbar.left < 77) {
                 progbar.left = progbar.left + 1;
                 }
         }
